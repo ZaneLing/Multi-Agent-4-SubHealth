@@ -104,9 +104,9 @@ class Doctor(Agent):
         def default_value_factory():
             return [("system", self.system_message)]
         if patient_id is None:
-            self.memories.pop(patient_id)
-        else:
             self.memories = defaultdict(default_value_factory) 
+        else:
+            self.memories.pop(patient_id)
 
     def speak(self, content, patient_id, save_to_memory=True):
         memories = self.memories[patient_id]
@@ -319,10 +319,10 @@ class ChatGLMDoctor(Doctor):
         def default_value_factory():
             return [("assistant", self.system_message)]
         if patient_id is None:
-            self.memories.pop(patient_id)
-        else:
             self.memories = defaultdict(default_value_factory) 
-
+        else:
+            self.memories.pop(patient_id)
+            
 
 @register_class(alias="Agent.Doctor.Minimax")
 class MinimaxDoctor(Doctor):
@@ -362,9 +362,9 @@ class MinimaxDoctor(Doctor):
         def default_value_factory():
             return []
         if patient_id is None:
-            self.memories.pop(patient_id)
+            self.memories = defaultdict(default_value_factory)  
         else:
-            self.memories = defaultdict(default_value_factory) 
+             self.memories.pop(patient_id)
 
     @staticmethod
     def translate_role_to_sender_type(role):
