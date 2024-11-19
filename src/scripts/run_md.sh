@@ -1,5 +1,5 @@
 # OpenAI
-export OPENAI_API_KEY="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"
+export OPENAI_API_KEY=""
 export OPENAI_API_BASE=""
 # Wenxin
 export WENXIN_API_KEY=""
