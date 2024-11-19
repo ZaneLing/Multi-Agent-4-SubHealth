@@ -15,9 +15,10 @@ class Patient(Agent):
             frequency_penalty=args.patient_frequency_penalty,
             presence_penalty=args.patient_presence_penalty
         )
+
+
         self.system_message = "你是一个病人。这是你的基本资料。\n" + \
             "{}\n".format(patient_profile)
-
         if "现病史" in medical_records:
             self.system_message += "<现病史> {}\n".format(medical_records["现病史"].strip())        
         if "既往史" in medical_records:
